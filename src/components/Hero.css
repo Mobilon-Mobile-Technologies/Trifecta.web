@@ -1,0 +1,128 @@
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-group {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: calc(50% - 400px/2);
+  top: calc(50% - 400px/2 - 116.13px);
+}
+
+.logo-blur {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: 0;
+  top: 0;
+  background: rgba(103, 104, 171, 0.2);
+  filter: blur(52.8169px);
+  border-radius: 50%;
+}
+
+.mobilon-logo {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: 0;
+  top: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.content-frame {
+  position: absolute;
+  width: 1067.29px;
+  max-width: 90%;
+  height: 231px;
+  left: calc(50% - 1067.29px/2 + 9.31px);
+  top: calc(50% - 231px/2 + 158.21px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 0;
+}
+
+.title-frame {
+  width: 100%;
+}
+
+.trifecta-title {
+  font-family: 'Jersey 10', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 69px;
+  color: #CDD4DA;
+  margin: 0;
+}
+
+.description-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 6px;
+  gap: 8px;
+  width: 100%;
+}
+
+.description-text {
+  font-family: 'Jersey 10', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 30px;
+  color: #CDD4DA;
+  margin: 0;
+}
+
+.highlight {
+  color: #6768AB;
+  font-weight: 500;
+}
+
+.highlight-pink {
+  color: #E54C87;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .logo-group {
+    width: 250px;
+    height: 250px;
+    left: calc(50% - 250px/2);
+    top: calc(50% - 250px/2 - 80px);
+  }
+  
+  .logo-blur {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .mobilon-logo {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .trifecta-title {
+    font-size: 48px;
+    line-height: 52px;
+  }
+  
+  .description-text {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

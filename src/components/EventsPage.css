@@ -1,0 +1,20 @@
+.events-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  gap: 20px;
+  width: 100%;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.coming-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  font-family: 'Jersey 10', sans-serif;
+  font-size: 48px;
+  color: #CDD4DA;
+}

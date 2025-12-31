@@ -1,38 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #0C093B 0%, #1a1456 50%, #0C093B 100%);
+  overflow: hidden;
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.scroll-container {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.scroll-container::-webkit-scrollbar {
+  width: 0;
+  display: none;
 }
 
-.App-header {
-  background-color: #282c34;
+.page-section {
+  width: 100vw;
+  height: 100vh;
   min-height: 100vh;
+  max-height: 100vh;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+}
+
+.hero-page {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+.content-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Background blur effects */
+.background-blur {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ellipse {
+  position: absolute;
+  background: #420D4B;
+  filter: blur(61.3683px);
+}
+
+.ellipse-1 {
+  width: 103.63px;
+  height: 432.56px;
+  left: -107.87px;
+  top: 20px;
+  transform: rotate(-30deg);
+}
+
+.ellipse-2 {
+  width: 103.63px;
+  height: 432.56px;
+  right: -107.87px;
+  top: 19.85px;
+  transform: rotate(30deg);
+}
+
+.ellipse-3 {
+  width: 89.19px;
+  height: 296.2px;
+  left: 85.23px;
+  top: -34.15px;
+  transform: rotate(-30deg);
+}
+
+.ellipse-4 {
+  width: 89.19px;
+  height: 296.2px;
+  right: 85.23px;
+  top: 10.03px;
+  transform: rotate(30deg);
+}
+
+/* Page Template */
+.page-template {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.page-container {
+  position: relative;
+  width: 1240px;
+  max-width: 95%;
+  height: 781px;
+  max-height: 90vh;
+  background: rgba(217, 217, 217, 0.02);
+  border: 1px solid #CDD4DA;
+  box-shadow: 
+    inset 67.0667px -67.0667px 67.0667px rgba(165, 165, 165, 0.1), 
+    inset -67.0667px 67.0667px 67.0667px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(67.0667px);
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* Content Mask */
+.content-mask {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 99px);
+  left: 0;
+  top: 99px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  /* Gradient fade effect */
+  mask-image: linear-gradient(180deg, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+/* Custom scrollbar */
+.content-mask::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-mask::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.content-mask::-webkit-scrollbar-thumb {
+  background: rgba(76, 135, 229, 0.5);
+  border-radius: 4px;
+}
+
+.content-mask::-webkit-scrollbar-thumb:hover {
+  background: rgba(76, 135, 229, 0.8);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: translateY(-20px);
   }
 }
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+

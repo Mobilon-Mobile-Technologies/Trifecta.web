@@ -1,61 +1,239 @@
-# Getting Started with Create React App
+# Mobilon TriFecta Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, interactive website for the Mobilon TriFecta event featuring glassmorphism design, smooth animations, and an engaging timeline interface.
+
+## Overview
+
+Mobilon TriFecta is a premier 3-day technology and innovation event consisting of:
+- **The Round Table Conference** - Industry discussions and networking
+- **PitchWave Arena** - Entrepreneurial pitch competition
+- **The Tech Forge Hackathon** - 24-hour development challenge
+
+**Prize Pool**: ₹2.5 Lakh | **Expected Participants**: 3000+
+
+## Features
+
+- **Hero Landing Page**: Animated logo with gradient effects and event description
+- **Interactive Navigation**: Tab-based navigation between Events, Teams, Sponsors, and About sections
+- **Event Cards**: Glassmorphic cards displaying event details with registration buttons
+- **Team Showcase**: Organized team display with divisions (Organising Team, Judging Team)
+- **Sponsors Display**: Multi-tier sponsor grid (Title, Gold, Silver sponsors)
+- **Interactive Timeline**: Scroll-based timeline with ball animation that snaps to event milestones
+- **Fusion Animations**: Visual effects when timeline ball anchors to event points
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+
+## Tech Stack
+
+- **Framework**: React 18
+- **Styling**: CSS3 with glassmorphism effects, custom animations, and keyframes
+- **Build Tool**: Create React App
+- **Package Manager**: npm
+- **Fonts**: Inter (Google Fonts), Jersey 10 (custom)
+
+## Project Structure
+
+```
+mobilon-website/
+├── public/
+│   ├── Mobilon logo.png         # Main logo file
+│   ├── index.html               # HTML template
+│   ├── manifest.json            # PWA manifest
+│   └── robots.txt               # SEO robots file
+├── src/
+│   ├── components/
+│   │   ├── Hero.js              # Landing page component
+│   │   ├── Hero.css
+│   │   ├── Navigation.js        # Tab navigation bar
+│   │   ├── Navigation.css
+│   │   ├── EventsPage.js        # Events listing
+│   │   ├── EventsPage.css
+│   │   ├── EventCard.js         # Reusable event card
+│   │   ├── EventCard.css
+│   │   ├── TeamsPage.js         # Teams showcase
+│   │   ├── TeamsPage.css
+│   │   ├── TeamCard.js          # Individual team member card
+│   │   ├── TeamCard.css
+│   │   ├── SponsorsPage.js      # Sponsors grid
+│   │   ├── SponsorsPage.css
+│   │   ├── AboutPage.js         # About with interactive timeline
+│   │   ├── AboutPage.css
+│   │   ├── ScrollIndicator.js   # Scroll arrows
+│   │   └── ScrollIndicator.css
+│   ├── App.js                   # Main application component
+│   ├── App.css                  # Global styles
+│   ├── index.js                 # React entry point
+│   ├── index.css                # Base styles
+│   └── reportWebVitals.js       # Performance monitoring
+├── package.json
+├── package-lock.json
+└── README.md
+```
+
+## Getting Started
+
+### Prerequisites
+
+- **Node.js**: Version 14 or higher
+- **npm**: Version 6 or higher
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd mobilon-website
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+The application will automatically open in your browser at `http://localhost:3000`
+
+### Building for Production
+
+Create an optimized production build:
+```bash
+npm run build
+```
+
+This creates a `build/` folder with minified and optimized files ready for deployment.
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the app in development mode at [http://localhost:3000](http://localhost:3000). The page reloads automatically when you make changes.
 
 ### `npm run build`
+Builds the app for production to the `build` folder. It bundles React in production mode and optimizes for best performance.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm test`
+Launches the test runner in interactive watch mode.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Key Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Hero Component
+- Mobilon logo with blur effects
+- TriFecta event description
+- Animated background ellipses
 
-### `npm run eject`
+### Navigation Component
+- Tab-based navigation system
+- Active state indicators
+- Smooth transitions between pages
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### AboutPage Component
+- Interactive scroll-based timeline
+- Ball animation that tracks viewport center
+- Snap-to-anchor functionality (within 15% threshold)
+- Fusion animation when ball reaches event milestones
+- Contact information and prize pool display
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Timeline Animation Details
+- **Ball Movement**: Tracks the center of the viewport as you scroll
+- **Anchor Points**: Four events (Registration Opens, Round Table, PitchWave, Tech Forge)
+- **Snap Behavior**: Ball snaps to nearest anchor when within 15% distance
+- **Fusion Effect**: Anchor dots animate toward ball and disappear; ball grows with glow effect
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Customization
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Updating Events
+Edit `src/components/EventsPage.js`:
+```javascript
+const events = [
+  {
+    id: 1,
+    eventName: 'Your Event Name',
+    date: '26/01/26',
+    time: '18:00',
+    description: 'Event description...'
+  }
+];
+```
 
-## Learn More
+### Changing Colors
+Modify CSS variables in `src/App.css`:
+```css
+background: linear-gradient(135deg, #0C093B 0%, #1a1456 50%, #0C093B 100%);
+--primary-blue: #4C87E5;
+--primary-purple: #6768AB;
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Adding Team Members
+Update `src/components/TeamsPage.js`:
+```javascript
+const organisingTeam = [
+  { name: 'Member Name', post: 'Position' }
+];
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Updating Sponsors
+Modify `src/components/SponsorsPage.js`:
+```javascript
+const titleSponsors = [
+  { name: 'Company Name', logo: '/path/to/logo.png' }
+];
+```
 
-### Code Splitting
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The app can be deployed to various platforms:
 
-### Analyzing the Bundle Size
+### Vercel
+```bash
+npm install -g vercel
+vercel
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Netlify
+```bash
+npm run build
+# Drag and drop the build folder to Netlify
+```
 
-### Making a Progressive Web App
+### GitHub Pages
+```bash
+npm install --save gh-pages
+# Add to package.json: "homepage": "https://yourusername.github.io/mobilon-website"
+# Add scripts: "predeploy": "npm run build", "deploy": "gh-pages -d build"
+npm run deploy
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Performance Optimization
+
+- **Code Splitting**: React lazy loading for components
+- **Image Optimization**: Use WebP format for images
+- **CSS Optimization**: Minified in production build
+- **Bundle Size**: Analyzed with `npm run build`
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Credits
+
+- **Design**: Abhimanyu and Pragydeep
+- **Development**: Adil
+- **Event**: Mobilon TriFecta, Bennett University
+
+## License
+
+This project is created for Mobilon TriFecta event at Bennett University.
+
+## Contact
+
+- **Email**: contact@mobilon.com
+- **Phone**: +1 (555) 123-4567
+- **Location**: Innovation Hub, Tech Campus
 
 ### Advanced Configuration
 

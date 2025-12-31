@@ -1,0 +1,124 @@
+.scroll-indicator {
+  position: fixed;
+  width: 200px;
+  height: 264px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.scroll-indicator.down {
+  bottom: -145.6px;
+  transform: translateX(-50%) matrix(1, 0, 0, -1, 0, 0);
+}
+
+.scroll-indicator.up {
+  top: -119px;
+  transform: translateX(-50%) matrix(1, 0, 0, -1, 0, 0);
+}
+
+.scroll-indicator:hover {
+  opacity: 0.8;
+}
+
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+  width: 200px;
+  height: 108.6px;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  margin: -18px 0;
+}
+
+.scroll-frame-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+  width: 104px;
+  height: 51px;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  z-index: 0;
+}
+
+.scroll-text {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin: 0;
+}
+
+.scroll-indicator:hover .scroll-text {
+  opacity: 1;
+}
+
+.arrow-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover .arrow-icon {
+  opacity: 1;
+}
+
+.arrow-icon.arrow-down {
+  transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.divider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  width: 200px;
+  height: 57px;
+  margin: -48px 0;
+}
+
+.divider-bar {
+  width: 200px;
+  height: 57px;
+  background: #0C093B;
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 768px) {
+  .scroll-indicator {
+    width: 150px;
+  }
+  
+  .scroll-frame {
+    width: 150px;
+  }
+  
+  .divider-container {
+    width: 150px;
+  }
+  
+  .divider-bar {
+    width: 150px;
+  }
+}

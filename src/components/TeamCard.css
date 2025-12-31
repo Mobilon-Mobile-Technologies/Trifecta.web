@@ -1,0 +1,69 @@
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 11px;
+  width: 150px;
+  height: 309px;
+  flex: none;
+  flex-grow: 0;
+}
+
+.team-member-image {
+  width: 150px;
+  height: 200px;
+  background: #8C8C8C;
+  border-radius: 8px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.team-member-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  width: 150px;
+  height: 98px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.member-name {
+  width: 150px;
+  height: 68px;
+  font-family: 'Jersey 10';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 34px;
+  text-align: center;
+  color: #CDD4DA;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: -4px 0px;
+}
+
+.member-post {
+  width: 150px;
+  height: 34px;
+  font-family: 'Jersey 10';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 34px;
+  text-align: center;
+  color: #6768AB;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}

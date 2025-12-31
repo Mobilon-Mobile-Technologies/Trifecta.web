@@ -1,0 +1,258 @@
+.teams-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+  gap: 20px;
+  width: 1240px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.teams-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+  gap: 20px;
+  width: 1240px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.team-division-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 40px;
+  gap: 10px;
+  width: 1240px;
+  height: 40px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.team-gradient-bar {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 0px;
+  row-gap: 0px;
+  width: 400px;
+  height: 40px;
+  border-radius: 0px 0px 8px 8px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  position: relative;
+}
+
+.gradient-rect {
+  width: 200px;
+  height: 40px;
+  background: linear-gradient(0deg, #A34CE5 0%, rgba(163, 76, 229, 0) 100%);
+  border-radius: 0px 0px 8px 8px;
+  position: absolute;
+  left: 0;
+  transition: left 0.3s ease;
+}
+
+.team-gradient-bar:has(.team-tab:nth-child(2).active) .gradient-rect {
+  left: 200px;
+}
+
+.team-division-tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+  width: 400px;
+  height: 40px;
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.team-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  width: 200px;
+  height: 26px;
+  flex: none;
+  flex-grow: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.team-tab-text {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  transition: color 0.3s ease;
+}
+
+.team-tab.active .team-tab-text {
+  color: #4C87E5;
+}
+
+.team-tab-underline {
+  width: 0px;
+  height: 2px;
+  background: #4C87E5;
+  border-radius: 4px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  transition: width 0.3s ease;
+}
+
+.team-tab.active .team-tab-underline {
+  width: 186px;
+}
+
+.team-sections {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 10px;
+  width: 1240px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.organising-team-sections {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 0px;
+  gap: 24px;
+  width: 1240px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.team-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 20px;
+  gap: 16px;
+  width: 1240px;
+  height: 394px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.team-section-title {
+  width: 1200px;
+  height: 69px;
+  font-family: 'Jersey 10';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 69px;
+  color: #FFFFFF;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0;
+}
+
+.team-scroll-container {
+  width: 1240px;
+  height: 309px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  position: relative;
+}
+
+.scroll-gradient-mask {
+  position: absolute;
+  width: 1200px;
+  height: 309px;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.02) 92.31%, rgba(12, 9, 59, 0.8) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.team-scroll-content {
+  position: absolute;
+  width: 1240px;
+  height: 309px;
+  left: 0px;
+  top: 0px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.team-scroll-content::-webkit-scrollbar {
+  height: 0px;
+}
+
+.team-cards-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 200px 0px 0px;
+  gap: 40px;
+  position: absolute;
+  height: 309px;
+  left: 0px;
+  top: 0px;
+}
+
+.judging-team-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+  gap: 20px;
+  width: 1240px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.judging-team-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  padding: 0px 162px;
+  gap: 50px 150px;
+  width: 1240px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}

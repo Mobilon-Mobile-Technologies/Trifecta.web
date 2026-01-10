@@ -17,12 +17,20 @@ function EventsPage() {
       id: 1,
       eventName: 'Registration Opens',
       image: '/PICS/events/Registration.png',
-      date: 'January 7, 2026',
+      date: 'January 12, 2026',
       time: '',
       description: 'Begin your journey by registering for the events'
     },
     {
       id: 2,
+      eventName: 'Registration Closes',
+      image: '/PICS/events/Registration.png',
+      date: 'January 20, 2026',
+      time: '',
+      description: 'Last day to register your team. The shortlisting of the registered teams will be posted on January 21, 2026'
+    },
+    {
+      id: 3,
       eventName: 'The Round Table Conference',
       image: '/PICS/events/RTC.jpg',
       date: 'January 23, 2026',
@@ -30,7 +38,7 @@ function EventsPage() {
       description: 'Join industry leaders, entrepreneurs, and innovators for insightful discussions on the future of technology and business. This conference brings together diverse perspectives to address the challenges and opportunities in the modern tech landscape.'
     },
     {
-      id: 3,
+      id: 4,
       eventName: 'PitchWave Arena',
       image: '/PICS/events/Pitchwave.jpg',
       date: 'January 23, 2026',
@@ -38,7 +46,7 @@ function EventsPage() {
       description: 'Watch emerging entrepreneurs pitch their groundbreaking ideas with a prototype to a panel of investors and mentors. This is your chance to witness innovation in action and see how the next generation of startups are shaping the future.'
     },
     {
-      id: 4,
+      id: 5,
       eventName: 'The Tech Forge Hackathon',
       image: '/PICS/events/Hackathon.png',
       date: 'January 24-25, 2026',
@@ -54,14 +62,8 @@ function EventsPage() {
         const timelineItems = timeline.querySelectorAll('.timeline-item');
         const timelineContents = timeline.querySelectorAll('.timeline-content');
         
-        console.log('=== TIMELINE CALCULATION DEBUG ===');
-        console.log('Total timeline items:', timelineItems.length);
-        console.log('Total timeline contents:', timelineContents.length);
-        
         if (timelineItems.length >= 2) {
           const isMobile = window.innerWidth <= 768;
-          console.log('Is mobile:', isMobile);
-          console.log('Window width:', window.innerWidth);
           
           let firstItemCenter, lastItemCenter;
           
@@ -74,7 +76,6 @@ function EventsPage() {
                 const contentMidpoint = contentOffsetTop + (content.offsetHeight / 2);
                 center.style.top = `${contentMidpoint}px`;
                 center.style.left = '30px';
-                console.log(`Item ${index}: content offsetTop=${contentOffsetTop}, height=${content.offsetHeight}, midpoint=${contentMidpoint}`);
               }
             });
             
@@ -83,29 +84,14 @@ function EventsPage() {
             const firstContent = firstItem.querySelector('.timeline-content');
             const lastContent = lastItem.querySelector('.timeline-content');
             
-            console.log('First item offsetTop:', firstItem.offsetTop);
-            console.log('First content offsetTop:', firstContent.offsetTop);
-            console.log('First content height:', firstContent.offsetHeight);
-            
-            console.log('Last item offsetTop:', lastItem.offsetTop);
-            console.log('Last content offsetTop:', lastContent.offsetTop);
-            console.log('Last content height:', lastContent.offsetHeight);
-            
             firstItemCenter = firstItem.offsetTop + firstContent.offsetTop + (firstContent.offsetHeight / 2);
             lastItemCenter = lastItem.offsetTop + lastContent.offsetTop + (lastContent.offsetHeight / 2);
-            
-            console.log('FORMULA: firstItemCenter = firstItem.offsetTop + firstContent.offsetTop + (firstContent.offsetHeight / 2)');
-            console.log(`FORMULA: ${firstItem.offsetTop} + ${firstContent.offsetTop} + (${firstContent.offsetHeight} / 2) = ${firstItemCenter}`);
-            
-            console.log('FORMULA: lastItemCenter = lastItem.offsetTop + lastContent.offsetTop + (lastContent.offsetHeight / 2)');
-            console.log(`FORMULA: ${lastItem.offsetTop} + ${lastContent.offsetTop} + (${lastContent.offsetHeight} / 2) = ${lastItemCenter}`);
           } else {
             timelineItems.forEach((item, index) => {
               const center = item.querySelector('.timeline-center');
               if (center) {
                 const itemMidpoint = item.offsetHeight / 2;
                 center.style.top = `${itemMidpoint}px`;
-                console.log(`Desktop Item ${index}: height=${item.offsetHeight}, midpoint=${itemMidpoint}`);
               }
             });
             
@@ -113,34 +99,21 @@ function EventsPage() {
             const lastItem = timelineItems[timelineItems.length - 1];
             firstItemCenter = firstItem.offsetTop + firstItem.offsetHeight / 2;
             lastItemCenter = lastItem.offsetTop + lastItem.offsetHeight / 2;
-            
-            console.log('Desktop calculation:');
-            console.log('First item center:', firstItemCenter);
-            console.log('Last item center:', lastItemCenter);
           }
           
           const calculatedLineHeight = lastItemCenter - firstItemCenter;
-          
-          console.log('FINAL CALCULATION:');
-          console.log(`Line height = lastItemCenter - firstItemCenter = ${lastItemCenter} - ${firstItemCenter} = ${calculatedLineHeight}`);
-          console.log(`Line top = ${firstItemCenter}`);
-          console.log(`Ball position = ${firstItemCenter}`);
           
           if (calculatedLineHeight > 0) {
             setLineTop(firstItemCenter);
             setLineHeight(calculatedLineHeight);
             setBallPositionPx(firstItemCenter + 15);
-            console.log('✓ Line height is valid, applying values');
           } else {
             const fallbackHeight = (timelineItems.length - 1) * 230;
             const fallbackTop = firstItemCenter;
             setLineTop(fallbackTop);
             setLineHeight(fallbackHeight);
             setBallPositionPx(fallbackTop + 15);
-            console.log('⚠ Line height invalid, using fallback:', fallbackHeight);
           }
-          
-          console.log('=================================');
         }
       }
     };
@@ -154,8 +127,6 @@ function EventsPage() {
         
         if (timelineItems.length < 2 || timelineContents.length < 2) return;
         
-        console.log('=== HANDLE SCROLL DEBUG ===');
-        
         const isMobile = window.innerWidth <= 768;
         
         let firstItemCenter, lastItemCenter;
@@ -167,14 +138,8 @@ function EventsPage() {
           const firstItem = firstContent.parentElement;
           const lastItem = lastContent.parentElement;
           
-          console.log('SCROLL: First item offsetTop:', firstItem.offsetTop);
-          console.log('SCROLL: Last item offsetTop:', lastItem.offsetTop);
-          
           firstItemCenter = firstItem.offsetTop + firstContent.offsetTop + firstContent.offsetHeight / 2;
           lastItemCenter = lastItem.offsetTop + lastContent.offsetTop + lastContent.offsetHeight / 2;
-          
-          console.log('SCROLL: firstItemCenter =', firstItemCenter);
-          console.log('SCROLL: lastItemCenter =', lastItemCenter);
         } else {
           const firstItem = timelineItems[0];
           const lastItem = timelineItems[timelineItems.length - 1];
@@ -184,14 +149,8 @@ function EventsPage() {
         
         const currentLineHeight = lastItemCenter - firstItemCenter;
         
-        console.log('SCROLL: currentLineHeight =', currentLineHeight);
-        console.log('SCROLL: This is OVERRIDING the 747px value!');
-        
         const effectiveLineHeight = currentLineHeight > 0 ? currentLineHeight : (timelineItems.length - 1) * 230;
         const effectiveLineTop = firstItemCenter;
-        
-        console.log('SCROLL: Setting line height to:', effectiveLineHeight);
-        console.log('SCROLL: Setting line top to:', effectiveLineTop);
         
         const scrollTop = eventsPage.scrollTop;
         const scrollHeight = eventsPage.scrollHeight;
@@ -246,8 +205,6 @@ function EventsPage() {
         
         setLineTop(effectiveLineTop);
         setLineHeight(effectiveLineHeight);
-        
-        console.log('=================================');
       }
     };
 
@@ -327,7 +284,7 @@ function EventsPage() {
           
           <div className={`timeline-item ${activeAnchor === 1 ? 'active' : ''}`}>
             <div className="timeline-image-container">
-              <img src="/PICS/events/RTC.JPG" alt="Registration Opens" className="timeline-image" />
+              <img src="/PICS/events/registration.png" alt="Registration Closes" className="timeline-image" />
             </div>
             <div className={`timeline-center ${activeAnchor === 1 ? 'active' : ''}`}></div>
             <div className="timeline-content">
@@ -338,9 +295,7 @@ function EventsPage() {
                 <button className="timeline-btn details-btn" onClick={() => openEventDetails(events[1])}>
                   Details
                 </button>
-                <button className="timeline-btn register-btn" onClick={() => handleRegister(events[1].eventName)}>
-                  Register
-                </button>
+
               </div>
             </div>
           </div>
@@ -361,13 +316,13 @@ function EventsPage() {
             </div>
             <div className={`timeline-center ${activeAnchor === 2 ? 'active' : ''}`}></div>
             <div className="timeline-image-container">
-              <img src="/PICS/events/Pitchwave.JPG" alt="Registration Opens" className="timeline-image" />
+              <img src="/PICS/events/RTC.JPG" alt="Round Table Conference" className="timeline-image" />
             </div>
           </div>
           
           <div className={`timeline-item ${activeAnchor === 3 ? 'active' : ''}`}>
             <div className="timeline-image-container">
-              <img src="/PICS/events/Hackathon.png" alt="Registration Opens" className="timeline-image" />
+              <img src="/PICS/events/Pitchwave.JPG" alt="PitchWave Arena" className="timeline-image" />
             </div>
             <div className={`timeline-center ${activeAnchor === 3 ? 'active' : ''}`}></div>
             <div className="timeline-content">
@@ -382,6 +337,26 @@ function EventsPage() {
                   Register
                 </button>
               </div>
+            </div>
+          </div>
+          
+          <div className={`timeline-item ${activeAnchor === 4 ? 'active' : ''}`}>
+            <div className="timeline-content">
+              <h3 className="timeline-title">{events[4].eventName}</h3>
+              <p className="timeline-date">{events[4].date}{events[4].time && ` at ${events[4].time}`}</p>
+              <p className="timeline-description">{events[4].description}</p>
+              <div className="timeline-buttons">
+                <button className="timeline-btn details-btn" onClick={() => openEventDetails(events[4])}>
+                  Details
+                </button>
+                <button className="timeline-btn register-btn" onClick={() => handleRegister(events[4].eventName)}>
+                  Register
+                </button>
+              </div>
+            </div>
+            <div className={`timeline-center ${activeAnchor === 4 ? 'active' : ''}`}></div>
+            <div className="timeline-image-container">
+              <img src="/PICS/events/Hackathon.png" alt="Tech Forge Hackathon" className="timeline-image" />
             </div>
           </div>
         </div>

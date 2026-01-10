@@ -4,9 +4,11 @@
   align-items: center;
   padding: 20px 0px;
   gap: 20px;
-  width: 1240px;
+  max-width: 1240px;
+  width: 100%;
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .teams-content {
@@ -15,7 +17,8 @@
   align-items: center;
   padding: 20px 0px;
   gap: 20px;
-  width: 1240px;
+  max-width: 1240px;
+  width: 100%;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -27,7 +30,8 @@
   align-items: center;
   padding: 0px 40px;
   gap: 10px;
-  width: 1240px;
+  max-width: 1240px;
+  width: 100%;
   height: 40px;
   flex: none;
   order: 0;
@@ -141,7 +145,8 @@
   align-items: flex-start;
   padding: 0px;
   gap: 10px;
-  width: 1240px;
+  max-width: 1240px;
+  width: 100%;
   flex: none;
   order: 1;
   align-self: stretch;
@@ -153,8 +158,9 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 20px 0px;
-  gap: 24px;
-  width: 1240px;
+  gap: 80px;
+  max-width: 1240px;
+  width: 100%;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -166,7 +172,8 @@
   align-items: flex-start;
   padding: 0px 20px;
   gap: 16px;
-  width: 1240px;
+  max-width: 1240px;
+  width: 100%;
   height: 394px;
   flex: none;
   order: 0;
@@ -186,7 +193,7 @@
   order: 0;
   align-self: stretch;
   flex-grow: 0;
-  margin: 0;
+  margin: 60px 0 0 0;
   text-align: center;
 }
 
@@ -208,20 +215,25 @@
 }
 
 .team-scroll-container {
-  width: 1240px;
+  max-width: 1240px;
+  width: 100%;
   height: 309px;
   flex: none;
   order: 1;
   flex-grow: 0;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .scroll-gradient-mask {
   position: absolute;
-  width: 100%;
-  height: 309px;
+  width: 150%;
+  height: 319px;
   left: 0px;
   top: 0px;
+  margin-top: -10px;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.02) 92.31%, rgba(12, 9, 59, 0.8) 100%);
   pointer-events: none;
   z-index: 1;
@@ -229,16 +241,35 @@
 
 .team-scroll-content {
   position: absolute;
-  width: 1240px;
+  width: 100%;
   height: 309px;
   left: 0px;
   top: 0px;
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: hidden;
+  will-change: scroll-position;
 }
 
 .team-scroll-content::-webkit-scrollbar {
   height: 0px;
+  display: none;
+}
+
+.team-scroll-content {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.team-scroll-lead {
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 769px) {
+  .team-scroll-lead .team-cards-row-head {
+    justify-content: center;
+  }
 }
 
 .team-cards-row {
@@ -247,22 +278,26 @@
   align-items: center;
   padding: 0px 200px 0px 0px;
   gap: 40px;
-  position: absolute;
+  position: relative;
   height: 309px;
   left: 0px;
   top: 0px;
+  min-width: max-content;
+  will-change: transform;
 }
 
 .team-cards-row-head{
-    display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0px 200px 0px 0px;
+  justify-content: center;
+  padding: 0px;
   gap: 40px;
-  position: absolute;
+  position: relative;
   height: 309px;
-  left: 250px;
+  left: 0px;
   top: 0px;
+  min-width: max-content;
 }
 
 .judging-team-section {
@@ -271,7 +306,8 @@
   align-items: center;
   padding: 20px 0px;
   gap: 20px;
-  width: 1240px;
+  max-width: 1240px;
+  width: 100%;
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -286,11 +322,40 @@
   align-content: center;
   padding: 0px 162px;
   gap: 50px 150px;
-  width: 1240px;
+  max-width: 1240px;
+  width: 100%;
   flex: none;
   order: 0;
   align-self: stretch;
   flex-grow: 0;
+}
+
+@media (max-width: 1280px) and (min-width: 769px) {
+  .teams-page,
+  .teams-content,
+  .team-division-header,
+  .team-sections,
+  .organising-team-sections,
+  .team-section,
+  .judging-team-section {
+    max-width: 100%;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .team-section {
+    padding: 0px 10px;
+  }
+
+  .team-scroll-container {
+    width: 100%;
+  }
+
+  .team-section-title,
+  .team-section-title-head {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -399,7 +464,7 @@
   .organising-team-sections {
     width: 390px;
     padding: 15px 0;
-    gap: 4px;
+    gap: 50px;
     align-items: center;
   }
 
@@ -417,6 +482,7 @@
     line-height: 51px;
     padding: 0px 10px;
     text-align: center;
+    margin: 40px 0 0 0;
   }
 
   .team-scroll-container {
@@ -434,6 +500,16 @@
   .team-scroll-content {
     width: 370px;
     height: 300px;
+  }
+
+  .team-scroll-lead {
+    overflow-x: scroll;
+    justify-content: flex-start;
+  }
+
+  .team-cards-row-head {
+    justify-content: flex-start;
+    min-width: max-content;
   }
 
   .team-cards-row {

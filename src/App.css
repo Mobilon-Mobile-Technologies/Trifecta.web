@@ -54,7 +54,6 @@
   flex-direction: column;
 }
 
-/* Background blur effects */
 .background-blur {
   position: absolute;
   width: 100%;
@@ -103,7 +102,6 @@
   transform: rotate(30deg);
 }
 
-/* Page Template */
 .page-template {
   width: 100vw;
   height: 100vh;
@@ -131,7 +129,6 @@
   margin: 0 auto;
 }
 
-/* Content Mask */
 .content-mask {
   position: absolute;
   width: 100%;
@@ -141,12 +138,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   
-  /* Gradient fade effect */
   mask-image: linear-gradient(180deg, transparent 0%, black 5%, black 95%, transparent 100%);
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
-/* Custom scrollbar */
 .content-mask::-webkit-scrollbar {
   width: 8px;
 }
@@ -165,7 +160,6 @@
   background: rgba(76, 135, 229, 0.8);
 }
 
-/* Animations */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -184,6 +178,5 @@
   }
 }
 
-/* Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 

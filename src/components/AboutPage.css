@@ -20,7 +20,6 @@
   max-width: 1240px;
 }
 
-/* MOBiLON Hero Section */
 .mobilon-hero-section {
   display: flex;
   flex-direction: row;
@@ -140,7 +139,6 @@
   background-position: center;
 }
 
-/* Social Icons */
 .social-icons-section {
   display: flex;
   flex-direction: row;
@@ -174,7 +172,6 @@
   height: 100%;
 }
 
-/* Divider */
 .about-divider {
   width: 800px;
   height: 1px;
@@ -184,7 +181,6 @@
   flex-grow: 0;
 }
 
-/* About Section */
 .about-section {
   display: flex;
   flex-direction: column;
@@ -218,7 +214,6 @@
   max-width: 800px;
 }
 
-/* Contact Info */
 .contact-info {
   display: flex;
   flex-direction: row;
@@ -257,7 +252,6 @@
   color: #CDD4DA;
 }
 
-/* Prize Grid */
 .prize-grid {
   display: flex;
   flex-direction: row;
@@ -312,7 +306,6 @@
   color: #CDD4DA;
 }
 
-/* Credits */
 .credits-section {
   display: flex;
   flex-direction: column;

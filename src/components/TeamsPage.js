@@ -1,15 +1,98 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './TeamsPage.css';
 import TeamCard from './TeamCard';
 
 function TeamsPage() {
   const [activeTeam, setActiveTeam] = useState('organising');
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [needsLeadScroll, setNeedsLeadScroll] = useState(false);
+  const scrollRefs = useRef([]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      
+      const minWidthForAllCards = 950;
+      setNeedsLeadScroll(window.innerWidth < minWidthForAllCards);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const setupInfiniteScroll = (scrollElement, index) => {
+      if (!scrollElement) return;
+
+      const row = scrollElement.querySelector('.team-cards-row, .team-cards-row-head');
+      if (!row) return;
+      
+      if (index === 0) {
+        const containerWidth = scrollElement.clientWidth;
+        const contentWidth = row.scrollWidth;
+        if (contentWidth <= containerWidth) {
+          return;
+        }
+      }
+      
+      setTimeout(() => {
+        scrollElement.scrollLeft = 0;
+      }, 100);
+      
+      let animationId;
+      let isPaused = false;
+      const scrollSpeed = 0.8;
+      
+      const autoScroll = () => {
+        if (!isPaused) {
+          const currentScroll = scrollElement.scrollLeft;
+          const singleSetWidth = row.scrollWidth / 3;
+          
+          if (currentScroll >= singleSetWidth * 2 - 50) {
+            scrollElement.scrollLeft = singleSetWidth + (currentScroll - (singleSetWidth * 2 - 50));
+          } else {
+            scrollElement.scrollLeft = currentScroll + scrollSpeed;
+          }
+        }
+        
+        animationId = requestAnimationFrame(autoScroll);
+      };
+      
+      setTimeout(() => {
+        animationId = requestAnimationFrame(autoScroll);
+      }, 200);
+      
+      const handleMouseEnter = () => {
+        isPaused = true;
+      };
+      const handleMouseLeave = () => {
+        isPaused = false;
+      };
+      
+      scrollElement.addEventListener('mouseenter', handleMouseEnter);
+      scrollElement.addEventListener('mouseleave', handleMouseLeave);
+      
+      return () => {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+        }
+        scrollElement.removeEventListener('mouseenter', handleMouseEnter);
+        scrollElement.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    };
+
+    const cleanups = scrollRefs.current.map((ref, index) => setupInfiniteScroll(ref, index));
+    return () => cleanups.forEach(cleanup => cleanup && cleanup());
+  }, [activeTeam, isMobile, needsLeadScroll]);
 
   const LeadOrganisers = [
     { name: 'Vasu Bhatia', post: 'President', image: '/PICS/Teams/vasu%20bhatia.jpg', linkedin: 'https://www.linkedin.com/in/vasu-bhatia/' },
     { name: 'Ashmit', post: 'Vice President', image: '/PICS/Teams/Ashmit2.jpg', linkedin: 'https://www.linkedin.com/in/ashmit-sharma-b75450322/' },
     { name: 'Moksha', post: 'General Secretary', image: '/PICS/Teams/moksh.jpeg', linkedin: 'https://www.linkedin.com/in/moksha-sharma-a232bb21b/' },
     { name: 'Parth Singh', post: 'Tech Master', image: '/PICS/Teams/Parth.jpg', linkedin: 'https://www.linkedin.com/in/parth-singh-b30517352?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' },
+    { name: 'Adya', post: 'Chief\nStrategist', image: '/PICS/Teams/adya.jpeg', linkedin: null },
+
   ];
 
   const organisingHeads = [
@@ -25,7 +108,6 @@ function TeamsPage() {
     { name: 'Sneha', post: 'Vigilance\nHead', image: '/PICS/Teams/sneha.jpg', linkedin: 'https://www.linkedin.com/in/sneha-jivnani-7241a6231?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app' },
     { name: 'Kshitij', post: 'Vigilance\nSub-Head', image: '/PICS/Teams/Kshitij.jpg', linkedin: 'https://www.linkedin.com/in/kshitij-dubey-479300382/' },
     { name: 'Anushka', post: 'Socialmedia\nHead', image: '/PICS/Teams/anushka.png', linkedin: null },
-    { name: 'Adya', post: 'Hospitality\nHead', image: '/PICS/Teams/adya.jpeg', linkedin: null },
     { name: 'Gauranvi', post: 'Creative\nHead', image: '/PICS/Teams/gauranvi.webp', linkedin: 'https://www.linkedin.com/in/gauranvi-mehra-68619a322/' },
     { name: 'Abhimanyu', post: 'Creative\nSub-Head', image: '/PICS/Teams/Abhi.jpeg', linkedin: 'https://www.linkedin.com/in/abhimanyu-narang/' },
     { name: 'Vishesh', post: 'Multimedia\nHead', image: '/PICS/Teams/Vishesh.jpg', linkedin: 'https://www.linkedin.com/in/vishesh-gautam-823699228?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app' },
@@ -101,10 +183,16 @@ function TeamsPage() {
                 <h2 className="team-section-title-head">Lead Organisers</h2>
                 <div className="team-scroll-container">
                   <div className="scroll-gradient-mask"></div>
-                  <div className="team-scroll-content">
+                  <div className="team-scroll-content team-scroll-lead" ref={el => scrollRefs.current[0] = el}>
                     <div className="team-cards-row-head">
                       {LeadOrganisers.map((member, index) => (
-                        <TeamCard key={index} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin} />
+                        <TeamCard key={`set1-${index}`} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin} />
+                      ))}
+                      {needsLeadScroll && LeadOrganisers.map((member, index) => (
+                        <TeamCard key={`set2-${index}`} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin} />
+                      ))}
+                      {needsLeadScroll && LeadOrganisers.map((member, index) => (
+                        <TeamCard key={`set3-${index}`} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin} />
                       ))}
                     </div>
                   </div>
@@ -115,10 +203,16 @@ function TeamsPage() {
                 <h2 className="team-section-title">Organising Heads</h2>
                 <div className="team-scroll-container">
                   <div className="scroll-gradient-mask"></div>
-                  <div className="team-scroll-content">
+                  <div className="team-scroll-content" ref={el => scrollRefs.current[1] = el}>
                     <div className="team-cards-row">
                       {organisingHeads.map((member, index) => (
-                        <TeamCard key={index} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin} />
+                        <TeamCard key={`set1-${index}`} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin} />
+                      ))}
+                      {organisingHeads.map((member, index) => (
+                        <TeamCard key={`set2-${index}`} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin} />
+                      ))}
+                      {organisingHeads.map((member, index) => (
+                        <TeamCard key={`set3-${index}`} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin} />
                       ))}
                     </div>
                   </div>
@@ -129,10 +223,16 @@ function TeamsPage() {
                 <h2 className="team-section-title">Organising Team</h2>
                 <div className="team-scroll-container">
                   <div className="scroll-gradient-mask"></div>
-                  <div className="team-scroll-content">
+                  <div className="team-scroll-content" ref={el => scrollRefs.current[2] = el}>
                     <div className="team-cards-row">
                       {organisingTeam.map((member, index) => (
-                        <TeamCard key={index} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin}/>
+                        <TeamCard key={`set1-${index}`} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin}/>
+                      ))}
+                      {organisingTeam.map((member, index) => (
+                        <TeamCard key={`set2-${index}`} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin}/>
+                      ))}
+                      {organisingTeam.map((member, index) => (
+                        <TeamCard key={`set3-${index}`} name={member.name} post={member.post} image={member.image} linkedin={member.linkedin}/>
                       ))}
                     </div>
                   </div>
@@ -143,10 +243,16 @@ function TeamsPage() {
                 <h2 className="team-section-title">Volunteers</h2>
                 <div className="team-scroll-container">
                   <div className="scroll-gradient-mask"></div>
-                  <div className="team-scroll-content">
+                  <div className="team-scroll-content" ref={el => scrollRefs.current[3] = el}>
                     <div className="team-cards-row">
                       {organisingTeam.map((member, index) => (
-                        <TeamCard key={index} name={'coming'} post={'soon'} />
+                        <TeamCard key={`set1-${index}`} name={'coming'} post={'soon'} />
+                      ))}
+                      {organisingTeam.map((member, index) => (
+                        <TeamCard key={`set2-${index}`} name={'coming'} post={'soon'} />
+                      ))}
+                      {organisingTeam.map((member, index) => (
+                        <TeamCard key={`set3-${index}`} name={'coming'} post={'soon'} />
                       ))}
                     </div>
                   </div>

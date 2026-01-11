@@ -349,7 +349,7 @@ function EventsPage() {
                 <button className="timeline-btn details-btn" onClick={() => openEventDetails(events[4])}>
                   Details
                 </button>
-                <button className="timeline-btn register-btn" onClick={() => handleRegister(events[4].eventName)}>
+                <button className="timeline-btn register-btn" onClick={() => window.open("https://www.oppskills.com/competitions/tech-forge-hackathon")}>
                   Register
                 </button>
               </div>

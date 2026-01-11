@@ -116,7 +116,6 @@ function TeamsPage() {
   ];
 
   const organisingTeam = [
-    { name: 'Anand', post: 'Sponsorship Team', image: '/PICS/Teams/anand.jpg', linkedin: null },
     { name: 'Harman', post: 'Sponsorship Team', image: '/PICS/Teams/harman.jpg', linkedin: null },
     { name: 'Sahil', post: 'Pr Team', image: '/PICS/Teams/sahil.jpg', linkedin: 'https://www.linkedin.com/in/sahil-goyal-a1a354375' },
     { name: 'Nirali', post: 'Pr Team', image: '/PICS/Teams/nirali.jpeg', linkedin: 'https://www.linkedin.com/in/nirali-goyal-931002376?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' },

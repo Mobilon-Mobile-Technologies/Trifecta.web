@@ -17,7 +17,7 @@ function EventsPage() {
       id: 1,
       eventName: 'Registration Opens',
       image: '/PICS/events/Registration.png',
-      date: 'January 12, 2026',
+      date: 'February 2nd, 2026',
       time: '',
       description: 'Begin your journey by registering for the events'
     },
@@ -25,15 +25,15 @@ function EventsPage() {
       id: 2,
       eventName: 'Registration Closes',
       image: '/PICS/events/Registration.png',
-      date: 'January 20, 2026',
+      date: 'February 15, 2026',
       time: '',
-      description: 'Last day to register your team. The shortlisting of the registered teams will be posted on January 21, 2026'
+      description: 'Last day to register your team. The shortlisting of the registered teams will be posted on February 17, 2026'
     },
     {
       id: 3,
       eventName: 'The Round Table Conference',
       image: '/PICS/events/RTC.jpg',
-      date: 'January 23, 2026',
+      date: 'February 20, 2026',
       time: '12:00',
       description: 'Join industry leaders, entrepreneurs, and innovators for insightful discussions on the future of technology and business. This conference brings together diverse perspectives to address the challenges and opportunities in the modern tech landscape.'
     },
@@ -41,7 +41,7 @@ function EventsPage() {
       id: 4,
       eventName: 'PitchWave Arena',
       image: '/PICS/events/Pitchwave.jpg',
-      date: 'January 23, 2026',
+      date: 'February 21, 2026',
       time: '15:00',
       description: 'Watch emerging entrepreneurs pitch their groundbreaking ideas with a prototype to a panel of investors and mentors. This is your chance to witness innovation in action and see how the next generation of startups are shaping the future.'
     },
@@ -49,7 +49,7 @@ function EventsPage() {
       id: 5,
       eventName: 'The Tech Forge Hackathon',
       image: '/PICS/events/Hackathon.png',
-      date: 'January 24-25, 2026',
+      date: 'February 22-23, 2026',
       time: '09:00',
       description: 'A 24-hour coding marathon where developers, designers, and innovators collaborate to build solutions that matter. Form teams, tackle real-world problems, and compete for exciting prizes while learning from industry experts.'
     }

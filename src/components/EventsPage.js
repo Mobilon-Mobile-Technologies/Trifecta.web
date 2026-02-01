@@ -41,7 +41,7 @@ function EventsPage() {
       id: 4,
       eventName: 'PitchWave Arena',
       image: '/PICS/events/Pitchwave.jpg',
-      date: 'February 21, 2026',
+      date: 'February 20, 2026',
       time: '15:00',
       description: 'Watch emerging entrepreneurs pitch their groundbreaking ideas with a prototype to a panel of investors and mentors. This is your chance to witness innovation in action and see how the next generation of startups are shaping the future.'
     },
@@ -49,7 +49,7 @@ function EventsPage() {
       id: 5,
       eventName: 'The Tech Forge Hackathon',
       image: '/PICS/events/Hackathon.png',
-      date: 'February 22-23, 2026',
+      date: 'February 21-22, 2026',
       time: '09:00',
       description: 'A 24-hour coding marathon where developers, designers, and innovators collaborate to build solutions that matter. Form teams, tackle real-world problems, and compete for exciting prizes while learning from industry experts.'
     }

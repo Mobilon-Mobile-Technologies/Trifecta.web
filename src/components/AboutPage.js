@@ -80,10 +80,7 @@ function AboutPage() {
           </div>
         </div>
 
-        <div className="credits-section">
-          <p className="credits-designers">Designed by Abhimanyu and Pragydeep</p>
-          <p className="credits-developer">Coded by Adil</p>
-        </div>
+
       </div>
     </div>
   );
